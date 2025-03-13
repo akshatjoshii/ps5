@@ -23,8 +23,6 @@
         <div id="pre-jb-view" class="d-flex align-items-center justify-content-center flex-direction-column selected">
             <a tabindex="0" class="btn fw-bold" id="run-jb" onclick="run()">Jailbreak</a>
             <a tabindex="0" class="btn" style="padding: 0.5rem 2rem; font-size: 1rem;" id="run-wk-only" onclick="run(true)">Webkit-only (sender)</a>
-            <button id="saveApp">Save App</button>
-            <button id="deleteApp">Delete App</button>
         </div>
 
         <div id="console-view">
@@ -92,38 +90,6 @@
                 run(autoload == "wkonly", false);
             }
         };
-    </script>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('Service Worker Registered:', reg))
-                .catch(err => console.error('Service Worker Registration Failed:', err));
-        }
-
-        // Save App (Cache All Required Files)
-        document.getElementById('saveApp').addEventListener('click', () => {
-            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-                navigator.serviceWorker.controller.postMessage({ action: 'cache' });
-                alert('App saved for offline use!');
-            } else {
-                alert('Service Worker not ready yet!');
-            }
-        });
-
-        // Delete App (Clear Cache & Unregister SW)
-        document.getElementById('deleteApp').addEventListener('click', async () => {
-            if ('serviceWorker' in navigator) {
-                const registrations = await navigator.serviceWorker.getRegistrations();
-                for (const reg of registrations) {
-                    await reg.unregister();
-                }
-                caches.keys().then(keys => {
-                    keys.forEach(key => caches.delete(key));
-                });
-                alert('App deleted! Reload to clear cache.');
-            }
-        });
     </script>
 </body>
 
