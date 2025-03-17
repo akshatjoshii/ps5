@@ -185,6 +185,17 @@ const payload_map = [
         binarySource: "",
         version: "1.0",
         customAction: CUSTOM_ACTION_APPCACHE_REMOVE
-    }
+    },
+    {
+        displayTitle: "etaHEN No Toolbox",
+        description: "AIO HEN",
+        fileName: "etaHEN-no-toolbox2.0b.elf",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/LightningMods/etaHEN",
+        binarySource: "https://github.com/etaHEN/etaHEN/releases/download/2.0b-pre/etaHEN.bin",
+        version: "2.0b-pre",
+        supportedFirmwares: ["4.", "5."],
+        toPort: 9021
+    },
 
 ];
